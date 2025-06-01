@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import DebtTracker from './DebtTracker';
 import SavingsTracker from './SavingsTracker';
+import InvestmentTracker from './InvestmentTracker';
 import { Button } from './components/ui/button';
 import { Moon, Sun } from 'lucide-react';
 
@@ -28,13 +29,18 @@ export default function App() {
               <Button onClick={() => setActiveTab('savings')} variant={activeTab === 'savings' ? 'default' : 'outline'}>
                 Savings Tracker
               </Button>
+              <Button onClick={() => setActiveTab('investments')} variant={activeTab === 'investments' ? 'default' : 'outline'}>
+                Investment Tracker
+              </Button>
             </div>
             <Button variant="ghost" onClick={toggleDarkMode} aria-label="Toggle dark mode">
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
           </div>
           <div className="rounded-xl shadow-lg p-4 bg-white dark:bg-gray-800 transition-colors duration-300">
-            {activeTab === 'debt' ? <DebtTracker /> : <SavingsTracker />}
+            {activeTab === 'debt' && <DebtTracker />}
+            {activeTab === 'savings' && <SavingsTracker />}
+            {activeTab === 'investments' && <InvestmentTracker />}
           </div>
         </div>
       </div>
